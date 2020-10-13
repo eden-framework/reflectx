@@ -167,3 +167,9 @@ func FieldDisplayName(structTag reflect.StructTag, namedTagKey string, defaultNa
 	}
 	return jsonTag[0:idxOfComma], omitempty, true
 }
+
+var TypeBytes = reflect.TypeOf([]byte(""))
+
+func IsBytes(tpe reflect.Type) bool {
+	return tpe.Kind() != reflect.String && tpe.ConvertibleTo(TypeBytes)
+}
