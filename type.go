@@ -124,6 +124,13 @@ func Deref(typ Type) Type {
 	return typ
 }
 
+func DerefRT(tpe reflect.Type) reflect.Type {
+	if tpe.Kind() == reflect.Ptr {
+		return Deref(tpe.Elem())
+	}
+	return tpe
+}
+
 func FullTypeName(typ Type) string {
 	buf := bytes.NewBuffer(nil)
 
