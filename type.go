@@ -126,7 +126,7 @@ func Deref(typ Type) Type {
 
 func DerefRT(tpe reflect.Type) reflect.Type {
 	if tpe.Kind() == reflect.Ptr {
-		return Deref(tpe.Elem())
+		return DerefRT(tpe.Elem())
 	}
 	return tpe
 }
